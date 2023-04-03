@@ -56,7 +56,7 @@
 
                     // Ejecutar la consulta SQL para obtener los reportes
                     Statement consulta = conexion.createStatement();
-                    ResultSet resultado = consulta.executeQuery("SELECT id_case, usr_id, case_name, case_status, case_area, case_creation_date, case_last_update_date  FROM tbl_cases");
+                    ResultSet resultado = consulta.executeQuery("SELECT id_case, usr_id, case_name, case_status, case_area, case_creation_date, case_last_update_date, case_solution  FROM tbl_cases");
                     
                     %>
                     
@@ -74,7 +74,7 @@
                                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Areá que va asignado</th>
                                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Fecha de creación</th>
                                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Fecha de última actualización</th>
-
+                                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Solución del reporte</th>
                                                     <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                                                         <span class="sr-only">Analizar</span>
                                                     </th>
@@ -84,14 +84,25 @@
                     
                     <%
                     while (resultado.next()) {
+                    String case_last_update_date;
+                    String case_solution;
                     Integer id_case = resultado.getInt("id_case");
                     String case_name = resultado.getString(2);
                     String usr_id = resultado.getString(3);
                     String case_status = resultado.getString(4);
                     String case_area = resultado.getString(5);
                     String case_creation_date = resultado.getString(6);
-                    String case_last_update_date = resultado.getString(6);
-                                             
+                    if(resultado.getString(7)==null){
+                        case_last_update_date = "Sin modificaciones";
+                    }
+                    else{
+                    case_last_update_date = resultado.getString(7);}
+                    if(resultado.getString(8)==null){
+                        case_solution = "Sin solución";
+                    }
+                    else{
+                    case_solution = resultado.getString(8);
+                    }                        
                     %>
                                         <%-- // Mostrar los reportes en una tabla HTML--%>    
                     <tr>
@@ -102,6 +113,7 @@
                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= case_area %></td>
                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= case_creation_date %></td>
                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= case_last_update_date %></td>
+                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= case_solution %></td>
                         <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                         <a href="ReporteVyA.jsp?id_case=<%= id_case %>" class="text-indigo-600 hover:text-indigo-900">Análizar</a>     
                         </td>

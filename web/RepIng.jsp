@@ -116,7 +116,7 @@
                                                         <label for="case_statusM">Estatus:</label>
                                                         <select id="case_statusM" name="case_statusM">
                                                           <option value="En proceso">En proceso</option>
-                                                          <option value="Fin de proceso">Finalizado</option>
+                                                          <option value="Fin de proceso">Fin de proceso</option>
                                                         </select>
                                                         <label for="case_areaM">ÁREA QUE VA DIRIGIDO:</label>
                                                         <select id="case_areaM" name="case_areaM">

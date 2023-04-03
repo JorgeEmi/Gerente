@@ -178,7 +178,7 @@
                                                         <form action="StatusAct.jsp" method="post">
                                                         <label for="case_statusM">Estatus:</label>
                                                         <select id="case_statusM" name="case_statusM">
-                                                          <option value="enproceso">En proceso</option>
+                                                          <option value="En proceso">En proceso</option>
                                                           <option value="abierto">Abierto</option>
                                                         </select>
                                                         <input type="hidden" name="id_case" value="<%= request.getParameter("id_case") %>">
@@ -191,10 +191,10 @@
 
                                                       <div>
                                                         <label for="area">Área que va dirigido el reporte:</label>
-                                                        <button type="button" name="area" value="soporte" >
+                                                        <button type="button" name="area" value="Soporte" >
                                                             <a href="RepIng.jsp?id_case=<%= ids %>" class="text-indigo-600 hover:text-indigo-900">Ingeniero de Soporte</a>
                                                         </button>
-                                                        <button type="button" name="area" value="mantenimiento">
+                                                        <button type="button" name="area" value="Mantenimiento">
                                                             <a href="RepGerMan.jsp?id_case=<%= ids %>" class="text-indigo-600 hover:text-indigo-900">Gerente de mantenimiento</a>
                                                         </button>
                                                       </div>
